@@ -160,7 +160,7 @@ color: #f44336!important ;
 	                                <div id="progressbar"></div>
 	                            </div>
 	                            <!-- /top-wizard -->
-								<form id="wrapped" method="POST" action="phpmailer/conference_phpmailer_template.php">
+								<form id="wrapped" method="POST">
 									<input id="website" name="website" type="text" value="" hidden>
 									<!-- Campo oculto para protección -->
 								  
@@ -183,23 +183,21 @@ color: #f44336!important ;
 										<!-- Empresa -->
 										<div class="mb-3 form-floating">
 										  <input type="text" name="empresa" id="empresa" class="form-control" placeholder="Empresa (opcional)">
-										  <label for="empresa">Empresa (opcional)</label>
+										  <label for="empresa">Empresa</label>
 										</div>
 								  
-										<!-- Comentarios 
-										<div class="form-floating mb-4">
-										  <textarea name="comentarios" id="comentarios" class="form-control" placeholder="Comentarios adicionales..." style="height: 50px;"></textarea>
-										  <label for="comentarios">Comentarios adicionales...</label>
-										</div> 
-									-->
 										<!-- Botón de envío -->
 										<div class="text-center">
 										  <button type="submit" class="btn btn-primary">Confirmar inscripción</button>
 										</div>
+								  
+										<!-- Mensaje de estado -->
+										<div id="mensaje-estado" class="mt-3"></div>
 									  </div>
 									</div>
 								  </form>
 								  
+								
 	                        </div>
 	                    </div>
 	                </div>
@@ -234,7 +232,35 @@ color: #fffcfc !important  ;
 	</div>
 
 	</div>
-
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+	(function(){
+	  emailjs.init("vXON802WIydyC1Q1r"); // Tu clave pública de EmailJS
+	})();
+  
+	document.getElementById('wrapped').addEventListener('submit', function(e) {
+	  e.preventDefault();
+  
+	  // Protección antispam (honeypot)
+	  if (document.getElementById("website").value !== "") return;
+  
+	  const templateParams = {
+		nombre: document.getElementById('nombre').value,
+		email: document.getElementById('email').value,
+		empresa: document.getElementById('empresa').value
+	  };
+  
+	  emailjs.send('service_aly8nf8', 'template_3znrcwq', templateParams)
+		.then(function(response) {
+		  document.getElementById('mensaje-estado').innerHTML = '<div class="alert alert-success">¡Inscripción enviada con éxito!</div>';
+		  document.getElementById('wrapped').reset();
+		}, function(error) {
+		  document.getElementById('mensaje-estado').innerHTML = '<div class="alert alert-danger">Error al enviar la inscripción. Intentalo de nuevo.</div>';
+		  console.error("EmailJS error:", error);
+		});
+	});
+  </script>
 	
 	<!-- COMMON SCRIPTS -->
 	<script src="js/jquery-3.7.1.min.js"></script>
