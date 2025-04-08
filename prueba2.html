@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evento Tech 2025</title>
+  <!-- Font Awesome para íconos de redes -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-papLF++A5fRq3wypoxjvJxFCUVkVuB8kskSc6rNf3wPA0Of0E0LNE4nTCAB2A9DpJ7a8oYwV1GKMVjWquHN6lQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+    }
+
+    .info-evento,
+    .formulario {
+      flex: 1;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Redes sociales */
+    .social-icons {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .social-icons a {
+      margin-left: 1rem;
+      color: #0c1821;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #f54257;
+    }
+
+    /* Lado izquierdo - información del evento */
+    .info-evento {
+      background-color: #ffffff;
+      color: #0c1821;
+      position: relative;
+    }
+
+    .info-evento h3 {
+      color: #f54257;
+      letter-spacing: 2px;
+      font-weight: normal;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-evento h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-evento img {
+      height: 40px;
+      margin: 1rem 0;
+    }
+
+    .info-evento p {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .info-evento ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-evento li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    /* Lado derecho - formulario */
+    .formulario {
+      background-color: #0c1821;
+      color: white;
+      align-items: flex-start;
+    }
+
+    .formulario h2 {
+      margin-bottom: 1rem;
+    }
+
+    .formulario input {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 4px;
+      background-color: #f3f3f3;
+      color: #000;
+    }
+
+    .formulario input::placeholder {
+      color: #555;
+    }
+
+    .formulario button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #f54257;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Estilos responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .info-evento, .formulario {
+        padding: 2rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .formulario input, .formulario button {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .social-icons {
+        position: static;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Información del evento (izquierda, fondo blanco) -->
+    <div class="info-evento">
+      <!-- Redes sociales -->
+      <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+      <img src="img/logo-integra.png" alt="Integra Software" style="width: 240px;">
+      
+      <h3>PRESENTA</h3>
+      <h1>EVENTO TECH 2025</h1>
+      <img class="logo" src="img/logo-progress-blazor.png" alt="Progress + Blazor"  style="width: 28px;width: 280px; margin-top:12px">
+      <p>Explorá el futuro del desarrollo web con C# y tecnologías modernas</p>
+      <ul>
+        <li>📅 Fecha: 22 de Abril</li>
+        <li>⏰ Hora: 18:00 hs</li>
+        <li>📍 Av. Ingeniero Huergo 953, 5A, CABA</li>
+        <li>🌐 Modalidad: Presencial + Streaming</li>
+      </ul>
+    </div>
+
+    <!-- Formulario (derecha, fondo oscuro) -->
+    <div class="formulario">
+      <h2>Inscribite al evento</h2>
+      <input type="text" placeholder="Nombre completo" />
+      <input type="email" placeholder="Correo electrónico" />
+      <input type="text" placeholder="Empresa (opcional)" />
+      <button>Confirmar inscripción</button>
+    </div>
+  </div>
+</body>
+</html>
