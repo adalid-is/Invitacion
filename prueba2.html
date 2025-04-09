@@ -4,104 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Evento Tech 2025</title>
-  <!-- Font Awesome para íconos de redes -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-papLF++A5fRq3wypoxjvJxFCUVkVuB8kskSc6rNf3wPA0Of0E0LNE4nTCAB2A9DpJ7a8oYwV1GKMVjWquHN6lQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
-    body, html {
-      height: 100%;
-      font-family: Arial, sans-serif;
+    body {
+      background-color: #0b1320;
+      color: #0b1320;
     }
 
     .container {
       display: flex;
-      flex-direction: row;
-      height: 100vh;
+      flex-wrap: wrap;
+      min-height: 100vh;
     }
 
-    .info-evento,
-    .formulario {
-      flex: 1;
-      padding: 3rem;
+    .left, .right {
+      flex: 1 1 100%;
+      padding: 2rem;
+    }
+
+      .left {
+      background-color: #ffffff;
+    }
+
+    .right {
+      background-color: #0b1320;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    /* Redes sociales */
-    .social-icons {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+    .logo {
+      font-size: 1.5rem;
+      color: #e63946;
+      font-weight: bold;
     }
 
-    .social-icons a {
-      margin-left: 1rem;
-      color: #0c1821;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #f54257;
-    }
-
-    /* Lado izquierdo - información del evento */
-    .info-evento {
-      background-color: #ffffff;
-      color: #0c1821;
-      position: relative;
-    }
-
-    .info-evento h3 {
-      color: #f54257;
-      letter-spacing: 2px;
-      font-weight: normal;
-      margin-bottom: 0.5rem;
-    }
-
-    .info-evento h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .info-evento img {
-      height: 40px;
+    .evento {
+      font-size: 2rem;
       margin: 1rem 0;
     }
 
-    .info-evento p {
-      margin: 1rem 0;
-      font-size: 1.1rem;
+    .info {
+      margin-top: 2rem;
+      border-top: 1px solid #e63946;
+      padding-top: 1rem;
     }
 
-    .info-evento ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .info-evento li {
+    .info p {
       margin: 0.5rem 0;
-      font-size: 1rem;
     }
 
-    /* Lado derecho - formulario */
     .formulario {
-      background-color: #0c1821;
-      color: white;
-      align-items: flex-start;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     .formulario h2 {
@@ -109,88 +73,189 @@
     }
 
     .formulario input {
-      margin-top: 1rem;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
       width: 100%;
-      max-width: 400px;
-      border-radius: 4px;
-      background-color: #f3f3f3;
-      color: #000;
-    }
-
-    .formulario input::placeholder {
-      color: #555;
-    }
-
-    .formulario button {
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background-color: #f54257;
-      color: white;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      background: #f2f2f2;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .formulario button {
+    padding: 0.75rem 1rem;
+    background-color: #f6f7f7;
+    color: #0b1320;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
     }
 
-    /* Estilos responsive */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
+    .logos img {
+      height: 40px;
+    }
 
-      .info-evento, .formulario {
-        padding: 2rem;
-        align-items: center;
-        text-align: center;
+    @media (min-width: 768px) {
+      .left, .right {
+        flex: 1 1 50%;
       }
+    }
 
-      .formulario input, .formulario button {
-        width: 100%;
-        max-width: 100%;
-      }
+    /* Panel Temario */
+    .panel {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(11, 19, 32, 0.95);
+      color: white;
+      overflow-y: auto;
+      padding: 2rem;
+      z-index: 1000;
+    }
 
-      .social-icons {
-        position: static;
-        margin-bottom: 1rem;
-      }
+    .panel__content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .close_panel {
+      color: #e63946;
+      font-size: 2rem;
+      float: right;
+      text-decoration: none;
+    }
+
+    .strip_info {
+      border-bottom: 1px solid #444;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .strip_info h3 {
+      color: #e63946;
+    }
+
+    .strip_info li {
+      margin-left: 1rem;
+      line-height: 1.6;
+    }
+
+    .temario-btn {
+      margin-top: 1.5rem;
+      background-color: transparent;
+      border: 1px solid #e63946;
+      padding: 0.5rem 1rem;
+      color: #e63946;
+      cursor: pointer;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Información del evento (izquierda, fondo blanco) -->
-    <div class="info-evento">
-      <!-- Redes sociales -->
-      <div class="social-icons">
-        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-      </div>
-      <img src="img/logo-integra.png" alt="Integra Software" style="width: 240px;">
-      
-      <h3>PRESENTA</h3>
-      <h1>EVENTO TECH 2025</h1>
-      <img class="logo" src="img/logo-progress-blazor.png" alt="Progress + Blazor"  style="width: 28px;width: 280px; margin-top:12px">
-      <p>Explorá el futuro del desarrollo web con C# y tecnologías modernas</p>
-      <ul>
-        <li>📅 Fecha: 22 de Abril</li>
-        <li>⏰ Hora: 18:00 hs</li>
-        <li>📍 Av. Ingeniero Huergo 953, 5A, CABA</li>
-        <li>🌐 Modalidad: Presencial + Streaming</li>
-      </ul>
-    </div>
 
-    <!-- Formulario (derecha, fondo oscuro) -->
+<div class="container">
+  <div class="left">
+    <div class="logo">INTEGRA <span style="color: black">SOFTWARE</span></div>
+    <p style="color: #e63946; margin-top: 0.5rem;">PRESENTA</p>
+    <div class="evento">Charla Progress 2025</div>
+
+<div class="logos">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Progress_logo_2019.svg/2560px-Progress_logo_2019.svg.png" alt="Progress">
+  <span style="font-size: 1.5rem;">+</span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Blazor.png" alt="Blazor">
+</div>
+
+<p style="margin-top: 1rem;">"Explorá el futuro del desarrollo web con C#, Openedge y tecnologías modernas"</p>
+
+<div class="info">
+  <p><i class="bi bi-calendar-event"></i> Fecha: 22 de Abril</p>
+  <p><i class="bi bi-clock"></i> Hora: 18:00 hs</p>
+  <p><i class="bi bi-geo-alt"></i> Av. Ingeniero Huergo 953, 5A, CABA</p>
+  <p><i class="bi bi-globe"></i> Modalidad: Presencial + Streaming</p>
+</div>
+    <button class="temario-btn" onclick="mostrarPanel()">Ver Temario</button>
+  </div>
+
+  <div class="right">
     <div class="formulario">
       <h2>Inscribite al evento</h2>
-      <input type="text" placeholder="Nombre completo" />
-      <input type="email" placeholder="Correo electrónico" />
-      <input type="text" placeholder="Empresa (opcional)" />
-      <button>Confirmar inscripción</button>
+      <input type="text" id="nombre" placeholder="Nombre completo">
+      <input type="email" id="correo" placeholder="Correo electrónico">
+      <input type="text" id="empresa" placeholder="Empresa (opcional)">
+      <button onclick="enviarFormulario()">Confirmar inscripción</button>
+      <p id="mensaje" style="margin-top: 1rem;"></p>
     </div>
   </div>
+</div>
+
+<!-- Panel Temario -->
+<div class="panel" id="panel_info">
+  <div class="panel__content">
+    <a href="#" class="close_panel" onclick="cerrarPanel()">
+      <i class="bi bi-x-circle"></i>
+    </a>
+    <h2 class="mb-5">Temario</h2>
+
+    <div class="strip_info">
+      <div>
+        <h3>Presentación:</h3>
+        <p><small>Oscar Nivia (Progress)</small></p>
+        <ul>
+          <li>Retiro de versión 11.7 (desde abril 2025)</li>
+          <li>Arquitectura y evolución de AppServer → PASOE</li>
+          <li>Servicios expuestos y Front End</li>
+          <li>Seguridad y balanceo con LoadMaster</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="strip_info">
+      <div>
+        <h3>Presentación:</h3>
+        <p><small>Pablo Moyano (Integra)</small></p>
+        <ul>
+          <li>Integración de PASOE con Blazor</li>
+          <li>Aplicación de tecnologías modernas con C#</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function enviarFormulario() {
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+    const mensaje = document.getElementById("mensaje");
+
+    if (!nombre || !correo) {
+      mensaje.textContent = "Por favor, completá nombre y correo.";
+      mensaje.style.color = "red";
+      return;
+    }
+
+    mensaje.textContent = "¡Inscripción confirmada! Nos vemos pronto 👋";
+    mensaje.style.color = "green";
+  }
+
+  function mostrarPanel() {
+    document.getElementById("panel_info").style.display = "block";
+  }
+
+  function cerrarPanel() {
+    document.getElementById("panel_info").style.display = "none";
+  }
+</script>
+
 </body>
+</html>
+
 </html>

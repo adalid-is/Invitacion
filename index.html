@@ -250,8 +250,8 @@ color: #f44336!important ;
 								  
 										<!-- Nombre completo -->
 										<div class="mb-3 form-floating">
-										  <input type="text" name="nombre" id="nombre" class="form-control required" placeholder="Nombre completo">
-										  <label for="nombre">Nombre completo</label>
+										  <input type="text" name="name" id="name" class="form-control required" placeholder="Nombre completo">
+										  <label for="name">Nombre completo</label>
 										</div>
 								  
 										<!-- Correo electrónico -->
@@ -325,11 +325,11 @@ color: #fffcfc !important  ;
       if (document.getElementById("website").value !== "") return; // Protección antispam
 
       const templateParams = {
-        nombre: document.getElementById('nombre').value,
+        name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         empresa: document.getElementById('empresa').value
       };
-
+	  emailjs.send('service_bkkbbtp', 'template_zwjq8nv', templateParams)
       emailjs.send('service_bkkbbtp', 'template_3dq6iks', templateParams)
         .then(function(response) {
 			document.getElementById('loader_form').style.display = 'none';
